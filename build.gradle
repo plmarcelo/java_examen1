@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.privalia'
+version '1.0-SNAPSHOT'
+description 'Examen de java 1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('log4j:log4j:1.2.17')
+    compile('org.projectlombok:lombok:1.18.0')
+    testCompile('junit:junit:4.12')
+    testCompile('org.mockito:mockito-all:1.9.5')
+}
