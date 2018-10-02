@@ -26,4 +26,10 @@ public class SharePriceTest {
         assertEquals(stringList.get(2), sharePrice.getCloseValue().toString());
     }
 
+    @Test(expected = ParseException.class)
+    public void aParseExceptionIsThrownIfStringListLengthIsWrong() throws ParseException {
+        List<String> stringList = Arrays.asList("28-dic-2017", "29.17");
+
+        SharePrice.createFromStringList(stringList);
+    }
 }

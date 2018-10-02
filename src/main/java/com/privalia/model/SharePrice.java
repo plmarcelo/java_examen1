@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-class SharePrice {
+public class SharePrice {
 
     private Date date;
 
@@ -20,6 +20,10 @@ class SharePrice {
     private BigDecimal closeValue;
 
     public static SharePrice createFromStringList(List<String> stringList) throws ParseException {
+        if (stringList.size() != 3) {
+            throw new ParseException("Wrong list length", 0);
+        }
+
         DateFormat dateFormat = DateFormat.getDateInstance();
         Date date = dateFormat.parse(stringList.get(0));
 
