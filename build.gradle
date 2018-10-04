@@ -6,6 +6,9 @@ group 'com.privalia'
 version '1.0-SNAPSHOT'
 description 'Examen de java 1'
 
+apply plugin:'application'
+mainClassName  = 'com.privalia.main.Main'
+
 sourceCompatibility = 1.8
 
 repositories {
@@ -14,7 +17,7 @@ repositories {
 
 dependencies {
     compile('log4j:log4j:1.2.17')
-    compile('org.projectlombok:lombok:1.18.0')
+    compile('org.projectlombok:lombok:1.18.2')
     testCompile('junit:junit:4.12')
     testCompile('org.mockito:mockito-all:1.9.5')
     testCompile('pl.pragmatists:JUnitParams:1.0.5')
