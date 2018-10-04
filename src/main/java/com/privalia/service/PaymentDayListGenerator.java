@@ -28,7 +28,7 @@ public class PaymentDayListGenerator implements DateListGenerator<Date> {
             Date lastWeekdayOfMonth = weekdayCalculator.calculate(
                     startCalendar.get(Calendar.MONTH),
                     startCalendar.get(Calendar.YEAR),
-                    Integer.parseInt(props.getProperty("payment.day"))
+                    Integer.parseInt(props.getProperty("paymentDay"))
                     );
 
             paymentDays.add(lastWeekdayOfMonth);

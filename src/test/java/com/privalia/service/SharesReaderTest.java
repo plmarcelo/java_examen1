@@ -1,7 +1,6 @@
 package com.privalia.service;
 
 import com.privalia.model.SharePrice;
-import lombok.extern.log4j.Log4j;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -45,7 +43,7 @@ public class SharesReaderTest {
     public void allLinesAreRead() throws IOException {
         SharesReader sharesReader = new SharesReader();
 
-        List<SharePrice> sharesList = sharesReader.read(prop.getProperty("shares.file"));
+        List<SharePrice> sharesList = sharesReader.read(prop.getProperty("sharesFile"));
 
         int expectedShares = 3;
         assertEquals(expectedShares, sharesList.size());
@@ -55,7 +53,7 @@ public class SharesReaderTest {
     public void wrongLinesAreIgnored() throws IOException {
         SharesReader sharesReader = new SharesReader();
 
-        List<SharePrice> sharesList = sharesReader.read(prop.getProperty("wrong.shares.file"));
+        List<SharePrice> sharesList = sharesReader.read(prop.getProperty("wrongSharesFile"));
 
         int expectedShares = 2;
         assertEquals(expectedShares, sharesList.size());

@@ -13,6 +13,7 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -28,18 +29,18 @@ public class SharesReader implements CsvReader<SharePrice> {
     private String[] headers;
 
     @Override
-    public List<SharePrice> read(String fileName) throws IOException {
+    public List<SharePrice> read(String fileName) {
         Path pathToFile = Paths.get(fileName);
 
         try (BufferedReader bufferedReader = Files.newBufferedReader(pathToFile)) { //, StandardCharsets.US_ASCII
             return parseBuffer(bufferedReader);
         } catch (NoSuchFileException e) {
             log.error("Archivo no encontrado");
-            throw e;
         } catch (IOException e) {
             log.error(e.getMessage());
-            throw e;
         }
+
+        return new ArrayList<>();
     }
 
     private List<SharePrice> parseBuffer(BufferedReader bufferedReader) throws IOException {
