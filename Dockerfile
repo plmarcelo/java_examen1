@@ -1,9 +1,9 @@
-FROM gradle:4.9-jdk8
+FROM gradle:jdk8
 
 RUN git clone https://github.com/plmarcelo/java_examen1.git project
 
 WORKDIR project
 
-RUN gradle -stacktrace build
+RUN gradle build
 
-#CMD ["gradle", "run"]
+CMD ["gradle", "run"]
