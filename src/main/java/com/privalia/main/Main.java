@@ -48,8 +48,8 @@ public class Main {
                 .orElse(null);
 
         if (sellDaySharePrice != null) {
-            BigDecimal totalProfit = sellDaySharePrice.getCloseValue().multiply(totalShares);
-            System.out.println(totalProfit);
+            BigDecimal totalProfit = sellDaySharePrice.getCloseValue().multiply(totalShares).setScale(3, BigDecimal.ROUND_HALF_UP);
+            System.out.println("Total profit: " + totalProfit);
         } else {
             System.out.println("No sell price found on sell day");
         }

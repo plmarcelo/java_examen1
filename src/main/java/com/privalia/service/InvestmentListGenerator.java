@@ -2,15 +2,17 @@ package com.privalia.service;
 
 import com.privalia.model.Investment;
 import com.privalia.model.SharePrice;
+import lombok.extern.log4j.Log4j;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.*;
 
+@Log4j
 public class InvestmentListGenerator implements DateListGenerator<Investment> {
 
-    public static final int SHARE_SCALE = 2;
+    public static final int SHARE_SCALE = 3;
     private List<SharePrice> sharePriceList;
     private PaymentDayListGenerator paymentDayListGenerator;
     private BigDecimal amountInvested;
@@ -38,7 +40,7 @@ public class InvestmentListGenerator implements DateListGenerator<Investment> {
                             .orElse(null);
 
                     if (nextSharePrice != null) {
-                        BigDecimal sharesPurchased = this.amountInvested.divide(nextSharePrice.getOpenValue(), SHARE_SCALE);
+                        BigDecimal sharesPurchased = this.amountInvested.divide(nextSharePrice.getOpenValue(), SHARE_SCALE, BigDecimal.ROUND_HALF_UP);
                         investmentList.add(new Investment(nextSharePrice.getDate(), sharesPurchased));
                     }
                 });
