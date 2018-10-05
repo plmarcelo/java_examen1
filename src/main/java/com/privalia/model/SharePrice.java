@@ -15,9 +15,9 @@ public class SharePrice {
 
     private Date date;
 
-    private BigDecimal openValue;
-
     private BigDecimal closeValue;
+
+    private BigDecimal openValue;
 
     public static SharePrice createFromStringList(List<String> stringList) throws ParseException {
         if (stringList.size() != 3) {
@@ -27,9 +27,9 @@ public class SharePrice {
         DateFormat dateFormat = DateFormat.getDateInstance();
         Date date = dateFormat.parse(stringList.get(0));
 
-        BigDecimal openValue = new BigDecimal(stringList.get(1).replaceAll(",", ""));
-        BigDecimal closeValue = new BigDecimal(stringList.get(2).replaceAll(",", ""));
+        BigDecimal openValue = new BigDecimal(stringList.get(2).replaceAll(",", ""));
+        BigDecimal closeValue = new BigDecimal(stringList.get(1).replaceAll(",", ""));
 
-        return new SharePrice(date, openValue, closeValue);
+        return new SharePrice(date, closeValue, openValue);
     }
 }
